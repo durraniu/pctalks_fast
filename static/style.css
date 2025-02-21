@@ -146,3 +146,12 @@ iframe {
     border-radius: 8px;
     margin-bottom: 20px;
 }
+
+.title-header {
+    text-align: center; /* Centers the text */
+    font-size: 2rem; /* Adjust size */
+    font-weight: bold;
+    padding: 40px 20px; /* Adds space */
+    color: white; /* Make text visible */
+    background: url(/static/banner.jpg'') center/cover no-repeat; /* Banner image */
+}

@@ -33,7 +33,7 @@ def create_talk_cards(filtered_talks):
 def get():
     talk_cards = create_talk_cards(valid_talks)
     
-    return Titled("Conference Talks",
+    return Titled("Explore and Watch PositConf 2024 Talks (FastHTML Version)",
         Div(
             Div(
                 Form(
@@ -58,7 +58,7 @@ def get():
 @rt("/filter")
 def get(search: str = "", topic: str = ""):
     filtered_talks = valid_talks.copy()
-    
+
     if search:
         search = search.lower()
         filtered_talks = [
@@ -73,8 +73,9 @@ def get(search: str = "", topic: str = ""):
             t for t in filtered_talks 
             if pd.notna(t.get('session_topics')) and topic in str(t['session_topics'])
         ]
-    
-    return Div(*create_talk_cards(filtered_talks), cls="talk-list")
+
+    # Return only filtered articles, NOT a new div
+    return create_talk_cards(filtered_talks)
 
 @rt("/talk/{video_id}")
 def get(video_id: str):
