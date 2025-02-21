@@ -3,18 +3,7 @@ import pandas as pd
 
 app, rt = fast_app(
     pico=False,
-    hdrs=(
-        Link(rel="stylesheet", href="static/style.css"), 
-        Script(src="https://unpkg.com/htmx.org@1.8.4"),
-        Script("""
-            document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('topic-button')) {
-                    document.querySelectorAll('.topic-button').forEach(btn => btn.classList.remove('active'));
-                    e.target.classList.add('active');
-                }
-            }
-        """)
-    )
+    hdrs=(Link(rel="stylesheet", href="static/style.css"), Script(src="https://unpkg.com/htmx.org@1.8.4"))
 )
 
 talks = pd.read_csv("combined_data.csv").to_dict(orient="records")
